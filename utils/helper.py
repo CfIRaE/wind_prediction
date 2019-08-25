@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_squared_error as mse
+from sklearn.metrics import r2_score as r2
+from sklearn.metrics import mean_absolute_error as mae
 import scipy
 import pandas
 
@@ -28,7 +30,7 @@ class Plotter(object):
     def find_accurracy_on_testset(self, model, X_test, Y_test,clip=False,plot=True):
         results = model.predict(X_test)
         print("-----------------------------------------------------------")
-        print("MSE: "+ str(mse(Y_test,results)))
+        print("MSE: "+ str(mse(Y_test,results)), "MAE: "+ str(mae(Y_test,results)), "R2: "+ str(r2(Y_test,results)))
         print("-----------------------------------------------------------")
 
         if plot:
